@@ -1,39 +1,45 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
-import { StatusBar } from 'expo-status-bar';
-import { useEffect } from 'react';
-import 'react-native-reanimated';
+import { SplashScreen, Stack } from "expo-router";
+import "./global.css"
+import {useFonts} from "expo-font";
+import { useEffect,useState } from "react";
+import * as Font from "expo-font";
+import { NavigationContainer } from "@react-navigation/native";
+// import Icon from "react-native-vector-icons/Ionicons";
+import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
+// export default function RootLayout() {
+//   const [fontsLoaded] = useFonts({
+//     "Montserrat": require('./assets/fonts/Montserrat.ttf'),
+//   });
+  
 
-import { useColorScheme } from '@/hooks/useColorScheme';
+//   useEffect(() => {
+//     if(fontsLoaded){
+//       SplashScreen.hideAsync();
+//     }
+//   }, [fontsLoaded]);
 
-// Prevent the splash screen from auto-hiding before asset loading is complete.
-SplashScreen.preventAutoHideAsync();
-
+//   if(!fontsLoaded) return null;
+//   return <Stack />;
+// }
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
-  const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-  });
+  const [fontsLoaded, setFontsLoaded] = useState(false);
 
   useEffect(() => {
-    if (loaded) {
+    async function loadFonts() {
+      await Font.loadAsync({
+        "Montserrat-Regular": require("../assets/fonts/Montserrat-Regular.ttf"),
+        "Montserrat-Bold": require("../assets/fonts/Montserrat-Bold.ttf"),
+        "Montserrat-ExtraBold": require("../assets/fonts/Montserrat-ExtraBold.ttf"),
+        "Montserrat-SemiBold": require("../assets/fonts/Montserrat-SemiBold.ttf"),
+        "Montserrat-Medium": require("../assets/fonts/Montserrat-Medium.ttf"),
+      });
+      setFontsLoaded(true);
       SplashScreen.hideAsync();
     }
-  }, [loaded]);
+    loadFonts();
+  }, []);
 
-  if (!loaded) {
-    return null;
-  }
+  if (!fontsLoaded) return null;
 
-  return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
-  );
+  return <Stack screenOptions = {{ headerShown: false}}/>;
 }
