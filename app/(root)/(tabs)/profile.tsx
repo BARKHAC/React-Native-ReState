@@ -171,8 +171,9 @@ const ProfileSection = () => {
 const Profile = () => {
   return (
     <SafeAreaView className="bg-background h-full">
+      <Header></Header>
       <FlatList
-        ListHeaderComponent={<Header />}
+        // ListHeaderComponent={<Header />}
         data={[1]} // Placeholder for content that would be rendered below the header
         renderItem={({}) => (
           <>

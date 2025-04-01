@@ -24,6 +24,12 @@
 import { View, Text, TouchableOpacity, Image } from "react-native";
 import React from "react";
 
+interface PropsC {
+  onPress?: () => void;
+  index: number; // Position in the list
+  imageSource: any; // Pass image dynamically
+  title:string;
+}
 interface Props {
   onPress?: () => void;
   index: number; // Position in the list
@@ -41,7 +47,7 @@ export const ExploreCards = ({ onPress, index, imageSource }: Props) => {
   );
 };
 
-export const CashBackedCards = ({ onPress, index, imageSource }: Props) => {
+export const CashBackedCards = ({ onPress, index, imageSource,title }: PropsC) => {
   return (
     <TouchableOpacity
       onPress={onPress}

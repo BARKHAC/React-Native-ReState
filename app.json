@@ -13,6 +13,9 @@
       "bundleIdentifier": "com.barkhac.ReactNativeReState",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
+      },
+      "runtimeVersion": {
+        "policy": "appVersion"
       }
     },
     "android": {
@@ -20,7 +23,8 @@
         "foregroundImage": "./assets/icons/cashbackedlogo.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.barkhac.ReactNativeReState"
+      "package": "com.barkhac.ReactNativeReState",
+      "runtimeVersion": "1.0.0"
     },
     "web": {
       "bundler": "metro",
@@ -64,6 +68,9 @@
       "eas": {
         "projectId": "501ea36d-67ba-4a35-98f1-9afc8c00bc86"
       }
+    },
+    "updates": {
+      "url": "https://u.expo.dev/501ea36d-67ba-4a35-98f1-9afc8c00bc86"
     }
   }
 }

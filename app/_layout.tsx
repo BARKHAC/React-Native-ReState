@@ -4,23 +4,8 @@ import {useFonts} from "expo-font";
 import { useEffect,useState } from "react";
 import * as Font from "expo-font";
 import { NavigationContainer } from "@react-navigation/native";
-// import Icon from "react-native-vector-icons/Ionicons";
 import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
-// export default function RootLayout() {
-//   const [fontsLoaded] = useFonts({
-//     "Montserrat": require('./assets/fonts/Montserrat.ttf'),
-//   });
-  
 
-//   useEffect(() => {
-//     if(fontsLoaded){
-//       SplashScreen.hideAsync();
-//     }
-//   }, [fontsLoaded]);
-
-//   if(!fontsLoaded) return null;
-//   return <Stack />;
-// }
 export default function RootLayout() {
   const [fontsLoaded, setFontsLoaded] = useState(false);
 
@@ -42,4 +27,11 @@ export default function RootLayout() {
   if (!fontsLoaded) return null;
 
   return <Stack screenOptions = {{ headerShown: false}}/>;
+  // return (
+  //   <Stack>
+  //     <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+  //     <Stack.Screen name="insights" options={{ headerShown: false }} />
+  //     <Stack.Screen name="signin" options={{ headerShown: false }} />
+  //   </Stack>
+  // );
 }
